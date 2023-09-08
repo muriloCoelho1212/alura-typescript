@@ -1,5 +1,5 @@
-import { Negociacao } from "../models/negociacao.js";
-import { Negociacoes } from "../models/negociacoes.js";
+import { Negociacao } from "../models/Negociacao.js";
+import { Negociacoes } from "../models/Negociacoes.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
