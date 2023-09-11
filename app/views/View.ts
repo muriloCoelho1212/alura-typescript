@@ -17,7 +17,7 @@ export abstract class View<T> {
         let template = this.template(model)
         if(this.escape){
             template = template.replace(/<script>[\s\S]*?<\/script>/, '')
-        }
+        } 
         this.elemento.innerHTML = template
     }
 
