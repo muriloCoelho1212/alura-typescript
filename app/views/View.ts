@@ -2,7 +2,12 @@ export abstract class View<T> {
     protected elemento: HTMLElement
     private escape = false
     constructor(seletor: string, escape?: boolean){
-        this.elemento = document.querySelector(seletor)
+        const elemento = document.querySelector(seletor) 
+        if(elemento){
+            this.elemento = elemento as HTMLElement
+        } else{
+            throw Error("Seletor não encontrado.")
+        }
         if(escape){
             this.escape = escape
         }
