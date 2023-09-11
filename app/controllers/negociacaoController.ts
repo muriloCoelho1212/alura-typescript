@@ -26,7 +26,7 @@ export class NegociacaoController {
             return
         }
         this.negociacoes.add(negociacao)
-        this.limparForm()
+        this.limparForm() 
         this.atualizaView()
     }
 
