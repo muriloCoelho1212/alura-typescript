@@ -1,3 +1,4 @@
+import { inspecionaMetodo } from "../decorators/inspecionaMetodo.js";
 import { LogarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
@@ -20,7 +21,8 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes)
     }
 
-    @LogarTempoDeExecucao()
+    @LogarTempoDeExecucao() // Passe um parâmetro true para ver o tempo de execução em segundos
+    @inspecionaMetodo
     public add(): void{
         const negociacao = Negociacao.criaDe(this.inputData.value, this.inputQuantidade.value, this.inputValor.value)
         if(!this.diaUtil(negociacao.data)){
