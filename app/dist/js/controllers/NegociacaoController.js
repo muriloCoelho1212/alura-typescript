@@ -10,6 +10,7 @@ import { LogarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
+import { NegociacoesService } from "../services/negociacoes-service.js";
 import { MsgView } from "../views/Msg-view.js";
 import { NegociacaoView } from "../views/Negociacoes-views.js";
 export class NegociacaoController {
@@ -17,6 +18,7 @@ export class NegociacaoController {
         this.negociacoes = new Negociacoes();
         this.negociacoesView = new NegociacaoView("#negociacoesView");
         this.msgView = new MsgView("#msgView");
+        this.negociacoesService = new NegociacoesService();
         this.negociacoesView.update(this.negociacoes);
     }
     add() {
@@ -28,6 +30,15 @@ export class NegociacaoController {
         this.negociacoes.add(negociacao);
         this.limparForm();
         this.atualizaView();
+    }
+    importaDados() {
+        this.negociacoesService.obterNegociacaoDoDia()
+            .then(negociacoesDeHoje => {
+            negociacoesDeHoje.forEach(negociacao => {
+                this.negociacoes.add(negociacao);
+            });
+            this.negociacoesView.update(this.negociacoes);
+        });
     }
     diaUtil(data) {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO;
