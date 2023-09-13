@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Negociacao } from "../models/Negociacao.js";
 export class NegociacoesService {
-    obterNegociacaoDoDia() {
+    obterNegociacoes() {
         return __awaiter(this, void 0, void 0, function* () {
             return fetch('http://localhost:8080/dados')
                 .then(res => res.json())
@@ -21,3 +21,4 @@ export class NegociacoesService {
         });
     }
 }
+//# sourceMappingURL=negociacoes-service.js.map

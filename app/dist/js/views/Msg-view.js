@@ -6,3 +6,4 @@ export class MsgView extends View {
         `;
     }
 }
+//# sourceMappingURL=Msg-view.js.map

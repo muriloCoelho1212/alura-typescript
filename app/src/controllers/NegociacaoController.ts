@@ -5,6 +5,7 @@ import { DiasDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/Negociacao.js";
 import { Negociacoes } from "../models/Negociacoes.js";
 import { NegociacoesService } from "../services/negociacoes-service.js";
+import { imprimir } from "../utils/imprimir.js";
 import { MsgView } from "../views/Msg-view.js";
 import { NegociacaoView } from "../views/Negociacoes-views.js";
 
@@ -34,18 +35,27 @@ export class NegociacaoController {
             return
         }
         this.negociacoes.add(negociacao)
+        imprimir(negociacao, this.negociacoes)
         this.limparForm() 
         this.atualizaView()
     }
 
     public importaDados(): void {
-            this.negociacoesService.obterNegociacaoDoDia()
-                .then(negociacoesDeHoje => {
-                negociacoesDeHoje.forEach(negociacao => {
-                    this.negociacoes.add(negociacao)
+        this.negociacoesService.obterNegociacoes()
+        .then(negociacoesDeHoje => {
+            return negociacoesDeHoje.filter(negociacaoDeHoje => {
+                return !this.negociacoes
+                    .lista().some(negociacao => negociacao
+                        .igual(negociacaoDeHoje)
+                    )
                 })
-                this.negociacoesView.update(this.negociacoes)
             })
+            .then(negociacoesDeHoje => {
+            negociacoesDeHoje.forEach(negociacao => {
+                this.negociacoes.add(negociacao)
+            })
+            this.negociacoesView.update(this.negociacoes)
+        })
     }
 
     private diaUtil(data: Date){

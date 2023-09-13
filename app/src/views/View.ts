@@ -1,6 +1,3 @@
-import { inspecionaMetodo } from "../decorators/inspecionaMetodo.js"
-import { LogarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js"
-
 export abstract class View<T> {
     protected elemento: HTMLElement
     constructor(seletor: string){

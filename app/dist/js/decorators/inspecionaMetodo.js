@@ -9,3 +9,4 @@ export function inspecionaMetodo(target, propertyKey, descriptor) {
     };
     return descriptor;
 }
+//# sourceMappingURL=inspecionaMetodo.js.map
