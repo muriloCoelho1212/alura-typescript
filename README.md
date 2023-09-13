@@ -20,3 +20,9 @@ Tecnologias utilizadas no desenvolvimento do projeto:
 Você pode encontrar a formação utilizada para desenvolver esse projeto [aqui](https://cursos.alura.com.br/formacao-typescript)
 
 ## Projeto
+
+Projeto online hospedado no Vercel: https://alura-typescript.vercel.app/
+
+>*OBS: O botão "Importar" da aplicação não irá funcionar porque o servidor utilizado para puxar os dados dele é local.*
+
+---
