@@ -6,21 +6,21 @@ export class NegociacaoView extends View<Negociacoes>{
     @escapar
     protected template(model: Negociacoes): string {
         return `
-            <table class="table table-hover table-bordered">
+            <table class="table table-light table-hover table-striped table-borderless rounded">
                 <thead>
                     <tr>
-                        <th>Data</th>
-                        <th>Quantidade</th>
-                        <th>Valor</th>
+                        <th class="text-center">Data</th>
+                        <th class="text-center">Quantidade</th>
+                        <th class="text-center">Valor</th>
                     </tr>
                 </thead>
                 <tbody>
                     ${model.lista().map(negociacao => {
                         return `
                             <tr>
-                                <td>${this.formatar(negociacao.data)}</td>
-                                <td>${negociacao.quantidade}</td>
-                                <td>${negociacao.valor}</td>
+                                <td class="text-center">${this.formatar(negociacao.data)}</td>
+                                <td class="text-center">${negociacao.quantidade}</td>
+                                <td class="text-center">${negociacao.valor}</td>
                             </tr>
                         `
                     }).join('')}
